@@ -14,12 +14,14 @@ spring:
         server-addr: 127.0.0.1:8848
         # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
         namespace: 8cbf4b9e-420e-435d-b80d-951511d54a9b
+        username: zhiwei
+        password: csdiao210
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
       # 配置管理
       config:
-        prefix: thought
+        prefix: thought-common
         file-extension: yaml  # 配置内容的数据格式, 默认为 properties
         enabled: true     # 如果不想使用 Nacos 进行配置管理, 设置为 false 即可
         group: DEFAULT_GROUP  # 组, 默认为 DEFAULT_GROUP

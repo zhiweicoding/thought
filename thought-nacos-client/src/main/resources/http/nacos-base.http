@@ -1,0 +1,7 @@
+### 查询服务实例信息
+GET http://127.0.0.1:8000/thought-nacos-client/nacosClient/serviceInstance
+Accept: application/json
+
+### 动态获取bean
+GET http://127.0.0.1:8000/thought-nacos-client/nacosClient/projectConfig
+Accept: application/json
