@@ -1,0 +1,64 @@
+server:
+  port: 7001
+  servlet:
+    context-path: /thought-admin
+
+spring:
+  application:
+    name: thought-admin
+#  security:
+#    user:
+#      name: zhiwei
+#      password: csdiao210
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        namespace: 8cbf4b9e-420e-435d-b80d-951511d54a9b
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+          user.name: zhiwei
+          user.password: csdiao210
+  thymeleaf:
+    check-template: false
+    check-template-location: false
+  # 被监控的应用状态变更为 DOWN、OFFLINE、UNKNOWN 时, 会自动发出告警: 实例的状态、原因、实例地址等信息
+  mail:
+    port: 25
+    protocol: smtp
+    host: smtp.163.com
+    username: diaozhiwei2k@163.com #登录的邮箱名
+    password: csdiao210!?Q #登录的邮箱密码、授权码
+    properties:
+      mail:
+        debug: false
+        smtp:
+          auth: true   #安全认证(默认是true)
+          ssl:
+            enable: false
+            trust: '*'
+          starttls:
+            enable: true
+            required: true
+  # 监控告警通知
+  boot:
+    admin:
+      ui:
+        title: 服务监控中心
+      notify:
+        mail:
+          from: ${spring.mail.username}
+          to: 873850653@qq.com
+          cc: diaozhiwei2k@163.com
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  # 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 *, 可以开放所有端点
+  endpoint:
+    health:
+      show-details: always
